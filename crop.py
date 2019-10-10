@@ -1,3 +1,4 @@
+
 #!/usr/bin/python
 
 ########################
@@ -10,14 +11,14 @@ from PIL import Image
 from PIL import ImageTk
 from PIL.ExifTags import TAGS
 import sys, os
-import tkinter
+import Tkinter
 #import ImageTk
 
 
 class ImageCropper:
 
     def __init__(self):
-        self.root = root = tkinter.Tk()
+        self.root = root = Tkinter.Tk()
         self.root.bind("<Button-1>", self.__on_mouse_down)
         self.root.bind("<ButtonRelease-1>", self.__on_mouse_release)
         self.root.bind("<B1-Motion>", self.__on_mouse_move)
@@ -34,7 +35,7 @@ class ImageCropper:
         self.ratioList = []
         self.box = [0, 0, 0, 0]
         self.ratio = 0.75
-        self.canvas = tkinter.Canvas(self.root, 
+        self.canvas = Tkinter.Canvas(self.root, 
                              highlightthickness = 0,
                              bd = 0)
 
@@ -117,8 +118,8 @@ class ImageCropper:
         self.photo = ImageTk.PhotoImage(self.resized_img)
         self.canvas.delete(self.canvas_image)
         self.canvas.config(width = self.resized_img.size[0], height = self.resized_img.size[1])
-        self.canvas_image = self.canvas.create_image(0, 0, anchor = tkinter.NW, image = self.photo)
-        self.canvas.pack(fill = tkinter.BOTH, expand = tkinter.YES)
+        self.canvas_image = self.canvas.create_image(0, 0, anchor = Tkinter.NW, image = self.photo)
+        self.canvas.pack(fill = Tkinter.BOTH, expand = Tkinter.YES)
         self.root.update()
 
         self.ratio = self.ratioList[0]
@@ -175,7 +176,7 @@ class ImageCropper:
             self.__crop_image()
             self.roll_image()
             self.canvas.delete(self.canvas_message)
-            self.canvas_message = self.canvas.create_text(10, 10, anchor = tkinter.NW, text = self.message, fill = 'red')
+            self.canvas_message = self.canvas.create_text(10, 10, anchor = Tkinter.NW, text = self.message, fill = 'red')
         elif event.char == 'q':
             self.root.destroy()
 
